@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>王国争霸 · 即时战略</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="gameCanvas"></canvas>
+
+  <div id="hud">
+    <div id="topbar">
+      <div class="res" title="金币"><span class="ico gold">◆</span><span id="resGold">0</span></div>
+      <div class="res" title="木材"><span class="ico wood">❖</span><span id="resLumber">0</span></div>
+      <div class="res" title="人口 / 上限"><span class="ico food">☘</span><span id="resFood">0/0</span></div>
+      <div class="spacer"></div>
+      <div id="clock">00:00</div>
+      <button id="btnPause" class="topbtn">暂停</button>
+    </div>
+
+    <div id="log"></div>
+
+    <div id="bottombar">
+      <div id="selPanel">
+        <div id="portrait">?</div>
+        <div id="selText">
+          <div id="selName">未选择</div>
+          <div id="selSub">左键框选单位，右键下达命令</div>
+          <div id="selBar"><i></i></div>
+        </div>
+      </div>
+
+      <div id="cmdPanel">
+        <div id="cmdTitle">命令</div>
+        <div id="cmdGrid"></div>
+        <div id="cmdHint"></div>
+      </div>
+
+      <div id="mapPanel">
+        <canvas id="minimap" width="160" height="160"></canvas>
+        <div id="mapHint">左键跳转视角</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tooltip"></div>
+
+  <div id="overlay" class="show">
+    <div class="panel">
+      <div class="crest">⚔</div>
+      <h1>王国争霸</h1>
+      <p class="sub">王国军 &nbsp;vs&nbsp; 黯影军团</p>
+      <div class="help">
+        <div><b>左键</b> 选择 / 拖拽框选 &nbsp;·&nbsp; <b>右键</b> 移动 · 攻击 · 采集</div>
+        <div><b>A</b> 攻击移动 &nbsp;·&nbsp; <b>S</b> 停止 &nbsp;·&nbsp; <b>B</b> 建造 &nbsp;·&nbsp; <b>Esc</b> 取消</div>
+        <div><b>方向键 / 鼠标贴边</b> 移动视角 &nbsp;·&nbsp; <b>滚轮</b> 缩放 &nbsp;·&nbsp; <b>空格</b> 回到基地</div>
+        <div class="goal">目标：采集资源 → 建造兵营 → 训练军队 → 摧毁敌方城镇大厅</div>
+      </div>
+      <button id="btnStart">开 始 战 斗</button>
+    </div>
+  </div>
+
+  <div id="endOverlay" class="show hidden">
+    <div class="panel">
+      <h1 id="endTitle">胜利</h1>
+      <p id="endText" class="sub"></p>
+      <button id="btnRestart">再 战 一 局</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/util.js"></script>
+<script src="js/world.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/game.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/render.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/input.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
