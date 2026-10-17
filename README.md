@@ -1,5 +1,7 @@
 # 王国争霸 · 浏览器即时战略（受经典 RTS 启发）
 
+在线试玩：**https://master-640.github.io/kingdom-rts/**
+
 纯 HTML5 Canvas + 原生 JavaScript 实现的 2D 即时战略游戏，无需构建、无外部依赖。
 资源采集、造建筑、造兵、人口、迷雾、寻路、敌方 AI 波次进攻，能完整打一局分胜负。
 

@@ -8,7 +8,7 @@ async function main() {
   const args = process.argv.slice(2);
   const port = Number(process.env.CDP_PORT || 9222);
   const list = await (await fetch(`http://127.0.0.1:${port}/json`)).json();
-  const page = list.find(t => t.type === 'page' && t.url.includes('warcraft-lite'));
+  const page = list.find(t => t.type === 'page' && (t.url.startsWith('http') || t.url.includes('warcraft-lite')));
   if (!page) {
     console.error('no page found:', list.map(t => t.url));
     process.exit(1);
