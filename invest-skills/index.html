@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>投资 Skill 排行 · Investment Agent Skills Leaderboard</title>
+<meta name="description" content="每日自动发现、过滤并排名 GitHub 上服务投资研究的 Agent Skill 仓库：量化交易、投研选股、财报估值、组合风控。">
+<meta name="theme-color" content="#1F5AE0">
+<link rel="stylesheet" href="./assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231F5AE0'/><path d='M26 68V38m16 30V26m16 42V48m16 20V32' stroke='white' stroke-width='9' stroke-linecap='round'/></svg>">
+</head>
+<body>
+<a class="skip" href="#board">跳到榜单</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 19V9m5 10V5m5 14v-7m5 7V8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </span>
+      <span class="brand-name" data-i18n="brand">投资 Skill 排行</span>
+    </div>
+    <nav class="topnav">
+      <a href="#method" data-i18n="navMethod">排名方法</a>
+      <a href="./data/rankings.json" download>JSON</a>
+      <a href="./data/rankings.csv" download>CSV</a>
+      <a href="https://github.com/Master-640/Master-640.github.io" target="_blank" rel="noopener">GitHub</a>
+      <button id="langBtn" class="ghost-btn" type="button" aria-label="切换语言 / Switch language">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        <span data-i18n="eyebrow">每日自动更新 · GitHub Actions</span>
+        <span class="sep" aria-hidden="true">/</span>
+        <span id="generatedAt">—</span>
+      </p>
+      <h1>
+        <span data-i18n="h1a">投资 Skill</span>
+        <em data-i18n="h1b">排行</em>
+      </h1>
+      <p class="lede" data-i18n="lede">
+        每天自动发现、过滤并排名 GitHub 上服务投资研究的 Agent Skill 仓库 ——
+        量化交易、投研选股、财报估值、组合风控。双信号硬过滤，不做人情榜。
+      </p>
+
+      <div class="stats" role="list">
+        <div class="stat" role="listitem">
+          <b id="statTotal">—</b>
+          <span data-i18n="statRepos">收录仓库</span>
+        </div>
+        <div class="stat" role="listitem">
+          <b id="statStars">—</b>
+          <span data-i18n="statStars">总 Stars</span>
+        </div>
+        <div class="stat" role="listitem">
+          <b id="statSkills">—</b>
+          <span data-i18n="statSkills">已核验 SKILL.md</span>
+        </div>
+        <div class="stat" role="listitem">
+          <b id="statFresh">—</b>
+          <span data-i18n="statFresh">30 天内活跃</span>
+        </div>
+      </div>
+
+      <div class="dist" id="dist" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="board wrap" id="board">
+    <div class="toolbar">
+      <div class="search">
+        <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <input id="q" type="search" autocomplete="off" spellcheck="false"
+               placeholder="搜索仓库、简介、分类" data-i18n-ph="searchPh" aria-label="搜索">
+        <kbd>/</kbd>
+      </div>
+      <div class="chips" id="catChips" role="group" aria-label="分类筛选"></div>
+      <div class="toolbar-right">
+        <label class="select">
+          <span class="sr" data-i18n="sortLabel">排序</span>
+          <select id="sort">
+            <option value="rank" data-i18n="sortRank">综合排名</option>
+            <option value="trend" data-i18n="sortTrend">趋势优先</option>
+            <option value="stars" data-i18n="sortStars">Stars 优先</option>
+            <option value="delta30" data-i18n="sortDelta">30 天增量</option>
+            <option value="fresh" data-i18n="sortFresh">最近更新</option>
+          </select>
+        </label>
+        <div class="viewtoggle" role="group" aria-label="视图">
+          <button id="viewTable" class="on" type="button" aria-pressed="true" data-i18n="viewTable">表格</button>
+          <button id="viewCard" type="button" aria-pressed="false" data-i18n="viewCard">卡片</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="notice" id="notice" hidden></p>
+
+    <div class="board-head">
+      <h2 data-i18n="boardTitle">完整榜单</h2>
+      <p id="count" class="count">—</p>
+    </div>
+
+    <div class="tablewrap">
+      <table class="board-table" id="table">
+        <thead>
+          <tr>
+            <th class="c-rank" scope="col">#</th>
+            <th class="c-repo" scope="col" data-i18n="thRepo">仓库</th>
+            <th class="num" scope="col">Stars</th>
+            <th class="num" scope="col" data-i18n="th7d">7d</th>
+            <th class="num" scope="col" data-i18n="th30d">30d</th>
+            <th scope="col" data-i18n="thTrend">趋势</th>
+            <th scope="col" data-i18n="thCat">分类</th>
+            <th class="num" scope="col" data-i18n="thPush">更新</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="cards" id="cards" hidden></div>
+    <p class="empty" id="empty" hidden data-i18n="empty">没有匹配的仓库。试试清空搜索或切回「全部」分类。</p>
+  </section>
+
+  <section class="method wrap" id="method">
+    <h2 data-i18n="methodTitle">排名方法</h2>
+    <div class="method-grid">
+      <div>
+        <h3 data-i18n="m1t">双信号硬过滤</h3>
+        <p data-i18n="m1b">一个仓库必须同时命中「金融投资信号」（quant / trading / 估值 / 财报 / 量化 / 选股 …）与「Skill 信号」（SKILL.md / agent / claude code / codex …），单靠其中一个词不算。fork、归档仓库、纯链接清单直接排除。</p>
+      </div>
+      <div>
+        <h3 data-i18n="m2t">真实 Skill 核验</h3>
+        <p data-i18n="m2b">对头部仓库递归读取 git tree，统计仓库里真实存在的 <code>SKILL.md</code> 数量。空壳仓库的「已核验」一栏会是 0。</p>
+      </div>
+      <div>
+        <h3 data-i18n="m3t">趋势分怎么算</h3>
+        <p data-i18n="m3b">以历史快照做差：<code>0.5×7d 日均新增 + 0.3×30d 日均新增 + 0.2×新鲜度</code>。榜单默认按 Stars 排，趋势分作为第二序；也可切「趋势优先」。</p>
+      </div>
+      <div>
+        <h3 data-i18n="m4t">数据从哪来</h3>
+        <p data-i18n="m4b">GitHub Search API，每日 UTC 00:10 由 Actions 跑一次；历史快照保留 60–90 天，用于算增量。原始数据开放下载：JSON / CSV。</p>
+      </div>
+    </div>
+    <p class="foot-note" data-i18n="footNote">
+      榜单只做信息聚合，不构成任何投资建议。条目由自动规则生成，可能误收 —— 发现漏收或错收，欢迎在 GitHub 开 issue。
+    </p>
+  </section>
+</main>
+
+<footer class="foot wrap">
+  <span>MIT · <a href="https://github.com/Master-640/Master-640.github.io" target="_blank" rel="noopener">Master-640/Master-640.github.io</a></span>
+  <span class="kbdhint" data-i18n="kbd">快捷键：/ 搜索 · v 切视图 · Esc 清空</span>
+</footer>
+
+<script src="./assets/app.js"></script>
+</body>
+</html>

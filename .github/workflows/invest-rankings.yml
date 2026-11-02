@@ -1,0 +1,67 @@
+name: Refresh investment skill rankings
+
+# 每天 UTC 00:10（北京时间 08:10）刷新一次榜单数据。
+# 想手动触发：仓库 Actions 页面 -> Refresh investment skill rankings -> Run workflow。
+on:
+  schedule:
+    - cron: "10 0 * * *"
+  workflow_dispatch:
+    inputs:
+      min_stars:
+        description: "最低 star 门槛"
+        required: false
+        default: "10"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: invest-rankings
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch rankings
+        env:
+          # 用内置 token 提额度：搜索 30 次/分钟、core 5000 次/小时
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python invest-skills/scripts/fetch_rankings.py \
+            --min-stars "${{ github.event.inputs.min_stars || '10' }}" \
+            --verify 60
+
+      - name: Commit data
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add invest-skills/data
+          if git diff --staged --quiet; then
+            echo "数据无变化，跳过提交"
+          else
+            git commit -m "chore(data): refresh investment skill rankings [skip ci]"
+            git push
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          p = pathlib.Path("invest-skills/data/rankings.json")
+          if not p.exists():
+              print(":warning: rankings.json 未生成")
+          else:
+              d = json.loads(p.read_text(encoding="utf-8"))
+              m = d.get("metadata", {})
+              print(f"收录 {m.get('total', 0)} 条 · 生成于 {m.get('generated_at', '?')}")
+          PY
