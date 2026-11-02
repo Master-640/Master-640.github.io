@@ -1,4 +1,4 @@
-/* 投资 Skill 排行 —— 前端渲染
+﻿/* 投资 Skill 排行 —— 前端渲染
    数据契约见 data/rankings.json（由 scripts/fetch_rankings.py 生成）。
    所有仓库简介均来自 GitHub 外部输入，一律转义后再插入 DOM。 */
 
@@ -31,6 +31,7 @@
       m4t: "数据从哪来",
       m4b: "GitHub Search API，每日 UTC 00:10 由 Actions 跑一次；历史快照保留 60–90 天，用于算增量。原始数据开放下载：JSON / CSV。",
       footNote: "榜单只做信息聚合，不构成任何投资建议。条目由自动规则生成，可能误收 —— 发现漏收或错收，欢迎在 GitHub 开 issue。",
+      hits: "本站访问", hitsUv: "访客",
       kbd: "快捷键：/ 搜索 · v 切视图 · Esc 清空",
       count: function (shown, total, date) {
         return "显示 " + shown + " / 共 " + total + " 条 · 数据更新于 " + date;
@@ -61,6 +62,7 @@
       m4t: "Where the data comes from",
       m4b: "GitHub Search API, refreshed daily at 00:10 UTC by GitHub Actions. Snapshots are kept for 60–90 days to compute deltas. Raw data is downloadable as JSON / CSV.",
       footNote: "This board is an information index only and is not investment advice. Entries are produced by automated rules and may include false positives — open an issue if you spot one.",
+      hits: "Views", hitsUv: "Visitors",
       kbd: "Keys: / search · v view · Esc clear",
       count: function (shown, total, date) {
         return "Showing " + shown + " / " + total + " · updated " + date;

@@ -428,6 +428,11 @@ tr.top3 td.c-rank { color: var(--blue-600); font-weight: 700; }
 }
 .kbdhint { font-variant-numeric: tabular-nums; }
 
+/* 访问统计：数字用等宽数字，颜色收在蓝与灰之间 */
+.hits { font-variant-numeric: tabular-nums; color: var(--ink-3); }
+.hits b { color: var(--blue-700); font-weight: 650; }
+.hits-sep { margin: 0 5px; color: var(--line-strong); }
+
 /* ---------------------------------------------------------- 响应式 */
 
 @media (max-width: 1040px) {

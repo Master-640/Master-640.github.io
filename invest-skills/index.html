@@ -155,8 +155,33 @@
 
 <footer class="foot wrap">
   <span>MIT · <a href="https://github.com/Master-640/Master-640.github.io" target="_blank" rel="noopener">Master-640/Master-640.github.io</a></span>
+  <span class="hits" id="hits" hidden>
+    <span data-i18n="hits">本站访问</span> <b id="busuanzi_value_site_pv">—</b>
+    <span class="hits-sep" aria-hidden="true">·</span>
+    <span data-i18n="hitsUv">访客</span> <b id="busuanzi_value_site_uv">—</b>
+  </span>
   <span class="kbdhint" data-i18n="kbd">快捷键：/ 搜索 · v 切视图 · Esc 清空</span>
 </footer>
+
+<!-- 访问统计：不蒜子（零注册）。脚本异步加载，失败则整块保持隐藏，不影响页面。 -->
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+(function () {
+  function show() {
+    var pv = document.getElementById("busuanzi_value_site_pv");
+    var uv = document.getElementById("busuanzi_value_site_uv");
+    var box = document.getElementById("hits");
+    if (!pv || !box) return;
+    var v = parseInt((pv.textContent || "").replace(/\D/g, ""), 10);
+    if (!isNaN(v) && v > 0) {
+      box.hidden = false;
+      if (uv) uv.textContent = (uv.textContent || "").replace(/\D/g, "") || "—";
+    }
+  }
+  setTimeout(show, 1500);
+  setTimeout(show, 3500);
+})();
+</script>
 
 <script src="./assets/app.js"></script>
 </body>
