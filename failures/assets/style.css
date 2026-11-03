@@ -272,6 +272,24 @@ h2 {
   background: var(--blue-050); color: var(--blue-700);
 }
 .tag.subject { background: var(--blue-600); color: #fff; }
+.tag.src {
+  background: var(--white); color: var(--blue-700);
+  border: 1px solid var(--blue-200);
+}
+.tag.own { background: var(--blue-600); color: #fff; }
+
+.story-source {
+  margin: 12px 0 0 !important;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+  font-size: 12px !important;
+  color: var(--ink-3) !important;
+}
+.story-source a {
+  color: var(--blue-700);
+  border-bottom: 1px solid var(--blue-100);
+}
+.story-source a:hover { border-bottom-color: var(--blue-600); text-decoration: none; }
 .tag.sample {
   background: var(--white); color: var(--ink-3);
   border: 1px dashed var(--line-strong);

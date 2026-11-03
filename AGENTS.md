@@ -38,11 +38,19 @@ failures/
 
 `failures/data/stories.json` 是唯一的数据源，手工编辑，没有脚本生成。
 
-每条故事字段固定，`subject` 取 `personal` 或 `company`，`type` 取 `leverage` / `chase` /
-`rumor` / `fraud` / `business` / `other`。缺字段不会报错，卡片上对应那行不显示。
+每条故事字段固定，`subject` 取 `personal` 或 `company`，`type` 取 `leverage` / `derivative` /
+`chase` / `rumor` / `fraud` / `business` / `sideline` / `other`。缺字段不会报错，卡片上对应那行不显示。
+
+`kind` 有两种取值，决定卡片的身份标签。
+
+- `case` 公开报道整理的案例，**必须带 `source`**（`name` / `url` / `date`），卡片底部会渲染成可点的出处链接，不显示作者
+- `submission` 读者投稿，带 `author`，默认匿名
+
+公开案例只转述事实，不整段转载原文，链接必须回原文。数字和日期以来源为准，宁可不写也不要估。
 
 文件顶层的 `demo: true` 打开时，标了 `"sample": true` 的条目会打「示例」标签，故事墙顶部
-会提示这是演示数据。**收满第一批真实投稿后，删掉所有 sample 条目，把 `demo` 改成 `false`。**
+会提示这是演示数据。当前 `demo` 已关闭，五条全部是带出处的公开案例，站上没有示例条目。
+只有在需要重新演示版式时才把它打开。
 
 投稿邮箱 `2447831422@qq.com` 出现在两处，`index.html` 的投稿区（明文加 mailto）和页脚。
 换邮箱要同时改这两处，还有投稿区那个 `mailto:` 里的 `subject` 参数。
