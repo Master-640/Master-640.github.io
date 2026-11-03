@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>投资失败故事 · 个人与企业的真实亏损记录</title>
+<meta name="description" content="收集个人投资者与企业真实的亏损经历。爆仓、杠杆、追涨杀跌、听消息、被骗、经营失血。不加滤镜，不给建议，只把过程讲清楚。">
+<meta name="theme-color" content="#1F5AE0">
+<link rel="stylesheet" href="./assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231F5AE0'/><path d='M32 30l36 40M68 30L32 70' stroke='white' stroke-width='9' stroke-linecap='round'/></svg>">
+</head>
+<body>
+<a class="skip" href="#wall">跳到故事墙</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="./">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="15" height="15"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </span>
+      <span class="brand-name">投资失败故事</span>
+    </a>
+    <nav class="topnav">
+      <a href="#wall">故事墙</a>
+      <a href="#submit">投稿</a>
+      <a href="#about">关于</a>
+      <a href="https://github.com/Master-640/Master-640.github.io/issues" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        <span>征稿中</span>
+        <span class="sep" aria-hidden="true">/</span>
+        <span>个人与企业</span>
+      </p>
+
+      <h1>投资失败故事<span class="h1-sub">个人与企业的真实亏损记录</span></h1>
+
+      <blockquote class="pull">
+        <p>如果我知道我会死在哪里，那我永远都不会去那儿。</p>
+        <cite>查理·芒格，引雅可比「反过来想，总是反过来想」<span class="cite-en">Invert, always invert.</span></cite>
+      </blockquote>
+
+      <p class="lede">
+        这里只收一种东西，你自己真正亏过的那一笔。散户的账户，企业主的账本，都算。
+        不加滤镜，不给建议，不教你怎么赚回来。把时间、仓位、当时的判断写清楚，对别人就是一次免费的排雷。
+      </p>
+
+      <div class="cta-row">
+        <a class="btn primary" href="#submit">写下我的故事</a>
+        <a class="btn ghost" href="#wall">先看看别人怎么亏的</a>
+      </div>
+
+      <dl class="counters" id="counters">
+        <div><dt>故事</dt><dd id="statStories">0</dd></div>
+        <div><dt>个人</dt><dd id="statPersonal">0</dd></div>
+        <div><dt>企业</dt><dd id="statCompany">0</dd></div>
+        <div><dt>最常踩的坑</dt><dd id="statTop">—</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="why wrap">
+    <h2>为什么只写失败</h2>
+    <div class="why-grid">
+      <div>
+        <h3>赚钱的故事会说谎</h3>
+        <p>同样一笔盈利，可以解释成判断准确，也可以解释成运气好。事后复盘时，人会自动把过程修剪得比当时更理智。</p>
+      </div>
+      <div>
+        <h3>亏钱的故事有细节</h3>
+        <p>强平的时间点、补仓的价位、最后那通电话，这些是硬的。企业那条线也一样，应收账款是哪个月开始变长的，工资是哪个月发不出的。</p>
+      </div>
+      <div>
+        <h3>踩过的坑会重复</h3>
+        <p>杠杆、梭哈、听消息、拿不住、死扛、拿经营现金流去赌。翻来覆去就这几样，看多了会形成条件反射。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wall wrap" id="wall">
+    <div class="wall-head">
+      <h2>故事墙</h2>
+      <div class="chips" id="chips" role="group" aria-label="按类型筛选"></div>
+    </div>
+    <p class="wall-note" id="wallNote"></p>
+    <div class="stories" id="stories"></div>
+  </section>
+
+  <section class="submit wrap" id="submit">
+    <h2>把你的故事放上来</h2>
+    <p class="submit-lede">
+      不用文笔好，只要真实。散户写自己的账户，企业主写公司的账，都可以。写错的地方我来改，写不清的地方我会来问。
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step-no">1</span>
+        <h3>写清楚三件事</h3>
+        <p>什么时候进场的，为什么进；后来发生了什么，哪一步开始失控；最后怎么结束的，亏了多少。</p>
+      </div>
+      <div class="step">
+        <span class="step-no">2</span>
+        <h3>去掉能认出你的东西</h3>
+        <p>券商名字、具体金额可以模糊成比例，人名用化名，公司名可以写成行业加规模。默认匿名，只留年份和城市也行。</p>
+      </div>
+      <div class="step">
+        <span class="step-no">3</span>
+        <h3>选一个渠道投过来</h3>
+        <p>点下面的按钮直接开一个 issue，内容只有我能看到。不想用 GitHub 就发邮件。</p>
+      </div>
+    </div>
+
+    <div class="channels">
+      <a class="btn primary" id="issueBtn" href="https://github.com/Master-640/Master-640.github.io/issues/new" target="_blank" rel="noopener">用 GitHub 投（点开已填好模板）</a>
+      <a class="btn ghost" href="mailto:2447831422@qq.com?subject=%E6%8A%95%E7%A8%BF%EF%BC%9A%E6%88%91%E7%9A%84%E4%BA%8F%E6%8D%9F%E6%95%85%E4%BA%8B">用邮箱投</a>
+    </div>
+    <p class="mail-hint">
+      邮箱地址 <a href="mailto:2447831422@qq.com?subject=%E6%8A%95%E7%A8%BF%EF%BC%9A%E6%88%91%E7%9A%84%E4%BA%8F%E6%8D%9F%E6%95%85%E4%BA%8B">2447831422@qq.com</a>，标题写「投稿」就行。
+      觉得写得不好也没关系，先把事情说清楚，剩下的我来整理。
+    </p>
+
+    <details class="template">
+      <summary>看看投稿模板长什么样</summary>
+<pre id="tpl">【主体】个人 / 企业（企业的话补一句行业和大致规模）
+
+【标题】一句话概括，比如「两倍杠杆，两个跌停就没了」
+
+【时间】2021 年 3 月到 2021 年 7 月
+
+【标的】某新能源个股，不写代码也行；企业写投了什么项目
+
+【操作】怎么进场的，仓位多大，有没有加杠杆
+
+【过程】从浮盈到失控，中间的每一个决定
+
+【结果】亏损比例，有没有伤到本金以外的钱
+
+【复盘】现在回头看，哪一步最不该做
+
+【想对别人说】一句话就行</pre>
+      <p class="tpl-hint">复制这段，填完发过来。写不全也没关系，空着的部分我会问你。</p>
+    </details>
+
+    <p class="privacy">
+      我会核对时间线和数字的合理性，但不做身份验证。故事里出现具体公司、真实姓名的，我会先跟你确认再发。
+      这个站不接广告，不卖课，不荐股，也不提供任何形式的投资咨询。
+    </p>
+  </section>
+
+  <section class="about wrap" id="about">
+    <h2>关于这个站</h2>
+    <p>
+      普通人亏钱的过程很少被完整记录下来。赚了会发截图，亏了默默删自选。企业那边更安静，账收不回来之前，没人会说自己判断错了。
+    </p>
+    <p>
+      这个站想把这些过程留下来。不收成功学，不分析宏观，只记录具体的人在具体的价位上做了什么决定，以及这些决定后来怎么收场。
+    </p>
+    <p class="muted">
+      本站内容为个人经历叙述，不构成任何投资建议。市场有风险，别人的教训不能替你承担你的风险。
+    </p>
+  </section>
+</main>
+
+<footer class="foot wrap">
+  <span>投资失败故事 · 常更常新</span>
+  <span class="foot-right">
+    <a href="mailto:2447831422@qq.com">2447831422@qq.com</a>
+    <span class="sep" aria-hidden="true">/</span>
+    <a href="https://github.com/Master-640/Master-640.github.io" target="_blank" rel="noopener">GitHub</a>
+    <span class="sep" aria-hidden="true">/</span>
+    <a href="../invest-skills/">投资 AI 技能榜</a>
+  </span>
+</footer>
+
+<script src="./assets/app.js"></script>
+</body>
+</html>

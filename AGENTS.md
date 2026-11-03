@@ -6,11 +6,13 @@
 
 `Master-640.github.io` 是个人 GitHub Pages 站点，纯静态，没有构建步骤。
 
-当前唯一的内容是 `invest-skills/`，一个每天自动更新的投资类 AI Skill 仓库排行榜。站点地址
-`https://master-640.github.io/invest-skills/`。
+站点下有两个互不相干的栏目。
 
-下文所有路径都相对**仓库根目录**。本地源码目录 `invest-skill-board/` 是仓库里 `invest-skills/`
-的镜像，少一层前缀，改完要同步推过去。
+- `invest-skills/` 每天自动更新的投资类 AI Skill 仓库排行榜，`https://master-640.github.io/invest-skills/`
+- `failures/` 投资失败故事征集站，收个人和企业的真实亏损经历，`https://master-640.github.io/failures/`
+
+下文所有路径都相对**仓库根目录**。本地源码目录 `invest-skill-board/` 是 `invest-skills/`
+的镜像，`failure-stories/` 是 `failures/` 的镜像，都少一层前缀，改完要同步推过去。
 
 ## 目录
 
@@ -25,7 +27,25 @@ invest-skills/
   data/rankings.csv                     同上，导出用
   data/history/YYYY-MM-DD.json          每日星数快照，用于算增量
   scripts/fetch_rankings.py             抓取与筛选脚本
+failures/
+  index.html                            故事站页面
+  assets/style.css                      杂志式排版，衬线标题
+  assets/app.js                         故事渲染、主体/类型筛选
+  data/stories.json                     故事数据（手工维护）
 ```
+
+## 失败故事站怎么维护
+
+`failures/data/stories.json` 是唯一的数据源，手工编辑，没有脚本生成。
+
+每条故事字段固定，`subject` 取 `personal` 或 `company`，`type` 取 `leverage` / `chase` /
+`rumor` / `fraud` / `business` / `other`。缺字段不会报错，卡片上对应那行不显示。
+
+文件顶层的 `demo: true` 打开时，标了 `"sample": true` 的条目会打「示例」标签，故事墙顶部
+会提示这是演示数据。**收满第一批真实投稿后，删掉所有 sample 条目，把 `demo` 改成 `false`。**
+
+投稿邮箱 `2447831422@qq.com` 出现在两处，`index.html` 的投稿区（明文加 mailto）和页脚。
+换邮箱要同时改这两处，还有投稿区那个 `mailto:` 里的 `subject` 参数。
 
 ## 数据流水线
 
