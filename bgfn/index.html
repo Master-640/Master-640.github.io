@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BGFN 格雷厄姆财经网络 · 只报好消息</title>
+<meta name="description" content="仿《聪明的投资者》第 8 章虚构的 BGFN 电视台：股价下跌是买家的好消息，上涨是卖家的好消息。每日收盘后播报。">
+<meta name="theme-color" content="#1F5AE0">
+<link rel="stylesheet" href="./assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231F5AE0'/><path d='M22 66l14-16 12 10 16-24' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
+</head>
+<body>
+<a class="skip" href="#lead">跳到今日播报</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="mast-top">
+      <span id="issueNo">第 — 期</span>
+      <span id="today">—</span>
+      <span>收盘后播报</span>
+    </div>
+    <h1 class="logo">BGFN</h1>
+    <p class="logo-sub">格雷厄姆财经网络 · 只报好消息</p>
+    <p class="logo-note">
+      仿《聪明的投资者》第 8 章里那家虚构的电视台。在这个频道里，
+      股价下跌是好消息，因为它意味着同样的公司今天更便宜了。
+    </p>
+  </div>
+</header>
+
+<div class="ticker" id="ticker" aria-label="今日行情"></div>
+<div class="wrap"><p class="us-note" id="usNote" hidden></p></div>
+
+<main class="wrap">
+  <section class="lead" id="lead">
+    <p class="kicker" id="kicker">今日头条</p>
+    <h2 class="headline" id="headline">正在拉取行情…</h2>
+    <p class="deck" id="deck"></p>
+  </section>
+
+  <div class="cols">
+    <section class="bulletins">
+      <h3 class="sec-title">逐条播报</h3>
+      <ul id="bulletins"></ul>
+    </section>
+
+    <aside class="side">
+      <section class="box quote-box">
+        <h3 class="sec-title">格雷厄姆怎么看今天</h3>
+        <blockquote id="quote">—</blockquote>
+        <cite id="quoteSrc"></cite>
+      </section>
+
+      <section class="box">
+        <h3 class="sec-title">行情天气</h3>
+        <p class="weather" id="weather">—</p>
+      </section>
+
+      <section class="box">
+        <h3 class="sec-title">往期</h3>
+        <ul class="archive" id="archive"><li class="muted">暂无往期</li></ul>
+      </section>
+    </aside>
+  </div>
+
+  <section class="disclaimer">
+    <p>
+      BGFN 是格雷厄姆在书里虚构的一个讽刺装置，本站是对它的仿作，与格雷厄姆本人、其出版方无任何关系。
+      行情数字来自公开接口，收盘价以交易所为准。这里的一切都不是投资建议 ——
+      真按「跌了就买」操作，后果自负。
+    </p>
+    <p class="muted">
+      数据源 腾讯行情 · 每个交易日北京时间 16:30 自动更新 ·
+      原书见《聪明的投资者》第 8 章「投资者与市场波动」
+    </p>
+  </section>
+</main>
+
+<footer class="foot wrap">
+  <span>BGFN · 只报好消息</span>
+  <span class="foot-right">
+    <a href="../failures/">投资失败故事</a>
+    <span class="sep">/</span>
+    <a href="../invest-skills/">投资 AI 技能榜</a>
+    <span class="sep">/</span>
+    <a href="https://github.com/Master-640/Master-640.github.io" target="_blank" rel="noopener">GitHub</a>
+  </span>
+</footer>
+
+<script src="./assets/app.js"></script>
+</body>
+</html>
