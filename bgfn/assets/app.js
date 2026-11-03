@@ -60,13 +60,18 @@
   }
 
   function renderTicker(items) {
-    el.ticker.innerHTML = '<div class="ticker-in">' + items.map(function (it) {
-      var cls = it.pct < 0 ? "down" : (it.pct > 0 ? "up" : "");
+    el.ticker.innerHTML = items.map(function (it) {
+      var cls = it.pct < 0 ? "down" : (it.pct > 0 ? "up" : "flat");
+      var arrow = it.pct < 0 ? "▼" : (it.pct > 0 ? "▲" : "·");
+      var word = it.pct < 0 ? "下跌" : (it.pct > 0 ? "上涨" : "持平");
+      var pctText = Math.abs(it.pct).toFixed(2) + "%";
       return '<div class="tick ' + cls + '">' +
         '<span class="n">' + esc(it.name) + "</span>" +
         '<span class="v">' + it.value.toFixed(2) + "</span>" +
-        '<span class="p">' + signed(it.pct) + "%</span></div>";
-    }).join("") + "</div>";
+        '<span class="p" aria-label="' + word + " " + pctText + '">' +
+        '<span class="a" aria-hidden="true">' + arrow + "</span>" +
+        pctText + "</span></div>";
+    }).join("");
   }
 
   function compose(items) {
@@ -179,12 +184,6 @@
 
     renderArchive(dates, payload.date);
 
-    var us = items.filter(function (i) { return i.market === "us"; });
-    var note = document.getElementById("usNote");
-    if (us.length && note) {
-      note.hidden = false;
-      note.textContent = "美股为上一交易日收盘价（" + (us[0].quoted_at || "").slice(0, 10) + "）。A 股为当日收盘。";
-    }
   }
 
   function load() {
