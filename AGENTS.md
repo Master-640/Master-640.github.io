@@ -1,0 +1,88 @@
+# AGENTS.md
+
+给接手这个仓库的 AI agent 看的操作说明。人是唯一读者时不必读它。
+
+## 这是什么
+
+`Master-640.github.io` 是个人 GitHub Pages 站点，纯静态，没有构建步骤。
+
+当前唯一的内容是 `invest-skills/`，一个每天自动更新的投资类 AI Skill 仓库排行榜。站点地址
+`https://master-640.github.io/invest-skills/`。
+
+下文所有路径都相对**仓库根目录**。本地源码目录 `invest-skill-board/` 是仓库里 `invest-skills/`
+的镜像，少一层前缀，改完要同步推过去。
+
+## 目录
+
+```
+.github/workflows/invest-rankings.yml   每日抓取工作流
+.nojekyll                               GitHub Pages 跳过 Jekyll
+invest-skills/
+  index.html                            页面结构
+  assets/style.css                      全部样式（蓝白配色）
+  assets/app.js                         渲染、筛选、排序、i18n
+  data/rankings.json                    榜单数据（脚本生成，勿手改）
+  data/rankings.csv                     同上，导出用
+  data/history/YYYY-MM-DD.json          每日星数快照，用于算增量
+  scripts/fetch_rankings.py             抓取与筛选脚本
+```
+
+## 数据流水线
+
+`scripts/fetch_rankings.py` 只用标准库，不需要装依赖。
+
+1. 六路 GitHub Search 查询取候选池
+2. 加权相关性打分加身份门，低于阈值丢弃
+3. 可选，递归读 git tree 数真实的 `SKILL.md`
+4. 与历史快照做差，算 1d / 7d / 30d 星标增量
+5. 写出 `data/rankings.json`、`data/rankings.csv`、当日快照
+
+本地跑：
+
+```bash
+python invest-skills/scripts/fetch_rankings.py --min-stars 10 --verify 0
+```
+
+有 `GITHUB_TOKEN` 时把 `--verify` 提到 60，否则核验那步会吃掉额度。
+
+工作流每天 UTC 00:10 触发，用仓库自带 token，跑完自动 commit `data/`。
+
+## 改东西之前先看这几条
+
+**数据文件不要手改。** `data/` 下三个位置都由脚本生成，下次 Actions 会整体覆盖。要改排名就改脚本里的权重。
+
+**筛选阈值是一个常量。** `scripts/fetch_rankings.py` 里的 `RELEVANCE_THRESHOLD`，现在是 3。权重在 `relevance()` 里，仓库名 +4、topics +3、简介 +3、泛技能合集 −6、跨领域合集 −4。调松调紧改这里，别在数据里挑。
+
+**文案要改两处。** 页面上可见的中文写在 `index.html` 的 `data-i18n` 属性里，实际文本在 `assets/app.js` 的 `I18N` 对象。只改 HTML 不生效，`applyStatic()` 会用字典覆盖。
+
+**配色只有蓝和灰。** 新增样式一律从 `:root` 的 `--blue-*` 和 `--ink-*` 里取，不要引入第二个强调色。涨跌也用蓝色，不用红绿。
+
+## 踩过的坑
+
+**文件名不能带回车。** 这个仓库曾经有个 `.nojekyll\r` 的文件，Windows 上 `git clone` 直接失败，报 `invalid path`。任何提交前确认文件名是干净的。
+
+**CRLF 警告可以忽略。** 仓库里存的是 LF，Windows 检出变 CRLF，`git add` 时会刷一屏 `LF will be replaced by CRLF`。不影响部署。
+
+**搜索接口单查询最多 5 个 AND / OR / NOT。** 超了返回 `HTTP Error 422`，不是语法错，是运算符数量超了。
+
+**未认证额度很低。** search 10 次每分钟，core 60 次每小时。递归读 tree 很费额度，30 个仓库就能把 core 打满，脚本会开始打印等待。
+
+**访问统计依赖第三方。** 页脚 PV/UV 来自不蒜子，脚本异步加载。拉不到时整块保持隐藏，这是预期的降级行为，不要改成显示 0。
+
+## 部署
+
+没有构建步骤。改完直接 push 到 `main`，GitHub Pages 自动发布，大约 40 秒生效。
+
+```bash
+git add -A
+git commit -m "feat(invest-skills): 说明改了什么"
+git push origin main
+```
+
+改完到线上确认一次，`https://master-640.github.io/invest-skills/` 返回 200 且内容确实变了。本地 `file://` 打开会因为 CORS 拿不到 JSON，要预览就起个 `python -m http.server`。
+
+## 已知的欠账
+
+- 榜单头部第一页的 7d / 30d 增量要等历史快照攒够才有数，首期为空属于正常
+- `EverMind-AI/SkillCorpus` 疑似误收，靠 topics 里的擦边词进来的，阈值调整可以剔掉
+- 访问统计只有页面显示，没有 API，拿不到原始数据做每日汇总
