@@ -33,6 +33,8 @@
     headline: document.getElementById("headline"),
     deck: document.getElementById("deck"),
     bulletins: document.getElementById("bulletins"),
+    anchorSay: document.getElementById("anchorSay"),
+    issueCount: document.getElementById("issueCount"),
     quote: document.getElementById("quote"),
     quoteSrc: document.getElementById("quoteSrc"),
     weather: document.getElementById("weather"),
@@ -105,6 +107,15 @@
           + best.name + " 比昨天贵 " + abs(best.pct) + "%，想卖的可以看它。"
       };
     }
+    var say;
+    if (downs >= n * 0.6) {
+      say = "「今天六个数里有五个在跌。这种日子，我不用看提词器。」";
+    } else if (ups >= n * 0.6) {
+      say = "「今天全线涨价。我知道你们想听好消息，可我没有。」";
+    } else {
+      say = "「半涨半跌最难播，因为它需要判断力，而我只负责念数字。」";
+    }
+
     var bullets = sorted.map(function (it) {
       var line;
       if (Math.abs(it.pct) < 0.05) {
@@ -127,7 +138,7 @@
       weather = "<b>阴。</b>不晴不雨，涨跌幅都在一个点以内，最没意思的一种天气。";
     }
 
-    return { lead: lead, bullets: bullets, weather: weather };
+    return { lead: lead, bullets: bullets, weather: weather, say: say };
   }
 
   function renderBulletins(bullets) {
@@ -164,6 +175,7 @@
     if (!items.length) throw new Error("没有指数数据");
 
     el.issueNo.textContent = "第 " + (dates && dates.length ? dates.length : 1) + " 期";
+    if (el.issueCount) el.issueCount.textContent = (dates && dates.length) || 1;
     el.today.textContent = fmtDate(payload.date);
 
     renderTicker(items);
@@ -172,6 +184,7 @@
     el.kicker.textContent = c.lead.kicker;
     el.headline.textContent = c.lead.headline;
     el.deck.textContent = c.lead.deck;
+    if (el.anchorSay && c.say) el.anchorSay.textContent = c.say;
     renderBulletins(c.bullets);
     el.weather.innerHTML = c.weather;
 

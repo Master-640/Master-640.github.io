@@ -153,6 +153,55 @@ a:hover { color: var(--blue-600); text-decoration: underline; text-underline-off
 .tick.down .p { color: var(--blue-600); font-weight: 620; }
 .tick.up .p { color: var(--ink-2); }
 .tick.flat .p { color: var(--ink-3); }
+.byline {
+  display: flex; align-items: center; gap: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+.avatar {
+  display: block; border-radius: 6px;
+  background: var(--surface);
+  image-rendering: pixelated;
+}
+.byline-text { display: flex; flex-direction: column; line-height: 1.45; }
+.byline-text b { font-size: 14.5px; font-weight: 700; letter-spacing: .02em; }
+.byline-text span { font-size: 12px; color: var(--ink-3); }
+
+.anchor-say {
+  margin: 22px 0 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--blue-200);
+  font-family: var(--serif);
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--blue-900);
+}
+.anchor-say cite {
+  display: block; margin-top: 4px;
+  font-family: var(--sans); font-style: normal;
+  font-size: 11.5px; letter-spacing: .08em;
+  color: var(--ink-3);
+}
+
+.anchor-card { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.avatar-lg {
+  display: block; border-radius: 8px; background: var(--surface);
+  image-rendering: pixelated;
+}
+.anchor-name { margin: 0; font-size: 16px; font-weight: 700; }
+.anchor-role { margin: 2px 0 0; font-size: 12px; color: var(--ink-3); }
+.anchor-facts {
+  list-style: none; margin: 0 0 12px; padding: 0;
+  font-size: 13px; color: var(--ink-2);
+}
+.anchor-facts li { padding: 3px 0 3px 12px; position: relative; }
+.anchor-facts li::before {
+  content: ""; position: absolute; left: 0; top: 12px;
+  width: 4px; height: 4px; border-radius: 50%; background: var(--blue-300);
+}
+.anchor-issue { margin: 0; font-size: 12.5px; color: var(--ink-3); }
+.anchor-issue b { color: var(--blue-700); font-variant-numeric: tabular-nums; }
 /* ---------------------------------------------------------- 头条 */
 
 .lead { padding: 46px 0 34px; border-bottom: 3px double var(--line-strong); }
