@@ -180,12 +180,15 @@ h1 {
 
 .counters {
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px; margin: 0; background: var(--line);
+  gap: 0; margin: 0;
   border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
   padding: 18px 0;
 }
-.counters > div { background: var(--paper); padding: 0 18px; }
-.counters > div:first-child { padding-left: 0; }
+.counters > div {
+  padding: 0 22px;
+  border-left: 1px solid var(--line);
+}
+.counters > div:first-child { padding-left: 0; border-left: 0; }
 .counters dt {
   font-size: 11px; font-weight: 650; letter-spacing: .07em;
   text-transform: uppercase; color: var(--ink-3);
