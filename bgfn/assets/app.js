@@ -87,20 +87,20 @@
     if (downs >= n * 0.6) {
       lead = {
         kicker: "今日头条 · 好消息",
-        headline: "今天 " + n + " 个指数有 " + downs + " 个在跌，" + worst.name + " 跌了 " + abs(worst.pct) + "%",
-        deck: "跌得最狠的是 " + worst.name + "，" + worst.value.toFixed(2) + " 点。说白了就是，同一批股票今天比昨天便宜了 "
+        headline: "今天 " + n + " 个指数里 " + downs + " 个在跌，" + worst.name + "跌了 " + abs(worst.pct) + "%",
+        deck: "跌得最狠的是" + worst.name + "，" + worst.value.toFixed(2) + " 点。同一批股票今天比昨天便宜了 "
           + abs(worst.pct) + "%。准备买的人听着是好事，已经满仓的人听着不痛快，同一件事，就看你在哪一边。"
       };
     } else if (ups >= n * 0.6) {
       lead = {
         kicker: "今日头条 · 坏消息",
-        headline: "今天没便宜货，" + n + " 个指数里 " + ups + " 个在涨，" + best.name + " 涨了 " + abs(best.pct) + "%",
+        headline: "今天没便宜货，" + n + " 个指数里 " + ups + " 个在涨，" + best.name + "涨了 " + abs(best.pct) + "%",
         deck: "公司还是那几家，分红也没多，价格就是贵了。手里拿着的人可以高兴一会儿，准备进场的人今天得多掏钱。"
       };
     } else {
       lead = {
         kicker: "今日头条 · 涨跌不一",
-        headline: "涨跌不一，" + worst.name + " 跌 " + abs(worst.pct) + "%，" + best.name + " 涨 " + abs(best.pct) + "%",
+        headline: "涨跌不一，" + worst.name + "跌 " + abs(worst.pct) + "%，" + best.name + "涨 " + abs(best.pct) + "%",
         deck: "今天不是齐涨齐跌。" + worst.name + " 比昨天便宜 " + abs(worst.pct) + "%，想买便宜货的可以看它；"
           + best.name + " 比昨天贵 " + abs(best.pct) + "%，想卖的可以看它。"
       };
