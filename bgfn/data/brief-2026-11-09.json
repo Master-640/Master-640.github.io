@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-09",
+  "generated_at": "2026-11-09T18:58:33Z",
+  "source": "腾讯行情 qt.gtimg.cn",
+  "indices": [
+    {
+      "code": "sh000001",
+      "name": "上证指数",
+      "market": "cn",
+      "value": 3660.79,
+      "prev_close": 3649.18,
+      "change": 11.61,
+      "pct": 0.32,
+      "quoted_at": "20261109161428"
+    },
+    {
+      "code": "sz399001",
+      "name": "深证成指",
+      "market": "cn",
+      "value": 11145.49,
+      "prev_close": 11175.78,
+      "change": -30.29,
+      "pct": -0.27,
+      "quoted_at": "20261109161436"
+    },
+    {
+      "code": "sz399006",
+      "name": "创业板指",
+      "market": "cn",
+      "value": 2458.56,
+      "prev_close": 2465.23,
+      "change": -6.67,
+      "pct": -0.27,
+      "quoted_at": "20261109161451"
+    },
+    {
+      "code": "usINX",
+      "name": "标普500",
+      "market": "us",
+      "value": 7552.28,
+      "prev_close": 7376.86,
+      "change": 175.42,
+      "pct": 2.38,
+      "quoted_at": "2026-11-09 13:58:19"
+    },
+    {
+      "code": "usIXIC",
+      "name": "纳斯达克",
+      "market": "us",
+      "value": 25222.34,
+      "prev_close": 24579.42,
+      "change": 642.92,
+      "pct": 2.62,
+      "quoted_at": "2026-11-09 13:58:19"
+    },
+    {
+      "code": "usDJI",
+      "name": "道琼斯",
+      "market": "us",
+      "value": 52429.96,
+      "prev_close": 51285.73,
+      "change": 1144.23,
+      "pct": 2.23,
+      "quoted_at": "2026-11-09 13:58:19"
+    }
+  ]
+}
