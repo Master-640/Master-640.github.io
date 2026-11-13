@@ -6,10 +6,13 @@
 
 `Master-640.github.io` 是个人 GitHub Pages 站点，纯静态，没有构建步骤。
 
-站点下有两个互不相干的栏目。
+根目录是一张主页加一个文章存档，下面三个子站各自独立。
 
+- `index.html` 主页，文章索引与「关于」，`https://master-640.github.io/`
+- `posts/` 文章页，一篇一个 HTML，文件名 `YYYY-MM-DD-slug.html`
 - `invest-skills/` 每天自动更新的投资类 AI Skill 仓库排行榜，`https://master-640.github.io/invest-skills/`
 - `failures/` 投资失败故事征集站，收个人和企业的真实亏损经历，`https://master-640.github.io/failures/`
+- `bgfn/` 仿《聪明的投资者》第 8 章的虚构电视台，每交易日收盘后播报
 
 下文所有路径都相对**仓库根目录**。本地源码目录 `invest-skill-board/` 是 `invest-skills/`
 的镜像，`failure-stories/` 是 `failures/` 的镜像，都少一层前缀，改完要同步推过去。
@@ -19,6 +22,10 @@
 ```
 .github/workflows/invest-rankings.yml   每日抓取工作流
 .nojekyll                               GitHub Pages 跳过 Jekyll
+index.html                              主页，文章索引 + 关于 + 项目
+assets/style.css                        主页与文章页共用的样式
+posts/_template.html                    文章模板，复制改名即可
+posts/YYYY-MM-DD-slug.html              文章正文
 invest-skills/
   index.html                            页面结构
   assets/style.css                      全部样式（蓝白配色）
@@ -33,6 +40,29 @@ failures/
   assets/app.js                         故事渲染、主体/类型筛选
   data/stories.json                     故事数据（手工维护）
 ```
+
+## 怎么写一篇新文章
+
+没有构建步骤，文章就是一份 HTML。
+
+1. 复制 `posts/_template.html` 成 `posts/2026-11-13-slug.html`
+2. 改 `<title>`、`<h1>`、`<time>`、`<p class="meta">`，正文从 `<!-- 正文从这里开始 -->` 往下写
+3. 打开根目录 `index.html`，照 `<!-- 每发一篇 -->` 注释里那块抄一个 `<li>`，填日期、标题、一句摘要，`datetime` 和文件名里的日期要对得上
+4. push 到 `main`
+
+正文只用 `assets/style.css` 里 `.prose` 已定义的标签：`p` `h2` `h3` `blockquote` `ul`/`ol`
+`figure` `table` `hr` `code`/`pre`。要加新样式先看根 `assets/style.css`，别在文章里写 `style=`。
+
+模板带 `noindex`，不要把 `_template.html` 当文章改，复制出来再动。
+
+摘要 `dek` 控制在 40 字内，主页上一行放得下；`<title>` 用「标题 · Master-640」的格式。
+
+## 事故：根路径 404
+
+曾经 `https://master-640.github.io/` 返回 404，而子站都正常。原因不是 Pages 没开，
+是根目录没有 `index.html`。报错页的原文是
+`The site configured at this address does not contain the requested file`——
+出现这句说明 Pages 是通的，缺的是文件本身。补一个 `index.html` 即可，不用去动 Pages 设置。
 
 ## 失败故事站怎么维护
 
@@ -95,7 +125,9 @@ python invest-skills/scripts/fetch_rankings.py --min-stars 10 --verify 0
 
 **未认证额度很低。** search 10 次每分钟，core 60 次每小时。递归读 tree 很费额度，30 个仓库就能把 core 打满，脚本会开始打印等待。
 
-**访问统计依赖第三方。** 页脚 PV/UV 来自不蒜子，脚本异步加载。拉不到时整块保持隐藏，这是预期的降级行为，不要改成显示 0。
+**访问统计依赖第三方。** 页脚 PV/UV 来自不蒜子，脚本异步加载。拉不到时整块保持隐藏，这是预期的降级行为，不要改成显示 0。主页和文章页不装统计，也不引任何外部资源。
+
+**Chrome headless 的窗口最窄 500px。** `--window-size=390,844` 会被夹到 500，截出来的图右侧像被切了，其实是渲染宽度和截图宽度不一致，不是布局溢出。验窄屏从 500 起。
 
 ## 部署
 
@@ -108,6 +140,8 @@ git push origin main
 ```
 
 改完到线上确认一次，`https://master-640.github.io/invest-skills/` 返回 200 且内容确实变了。本地 `file://` 打开会因为 CORS 拿不到 JSON，要预览就起个 `python -m http.server`。
+
+根目录主页和文章页不拉任何 JSON，双击本地文件就能看，不用起服务；上线后照样在 `https://master-640.github.io/` 上确认一次 200。
 
 ## 已知的欠账
 
