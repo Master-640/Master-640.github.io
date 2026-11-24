@@ -1,67 +1,67 @@
 {
-  "date": "2026-11-23",
-  "generated_at": "2026-11-23T20:25:46Z",
+  "date": "2026-11-24",
+  "generated_at": "2026-11-24T19:37:22Z",
   "source": "腾讯行情 qt.gtimg.cn",
   "indices": [
     {
       "code": "sh000001",
       "name": "上证指数",
       "market": "cn",
-      "value": 3538.95,
-      "prev_close": 3533.79,
-      "change": 5.16,
-      "pct": 0.15,
-      "quoted_at": "20261123161427"
+      "value": 3548.37,
+      "prev_close": 3538.95,
+      "change": 9.42,
+      "pct": 0.27,
+      "quoted_at": "20261124161427"
     },
     {
       "code": "sz399001",
       "name": "深证成指",
       "market": "cn",
-      "value": 10454.37,
-      "prev_close": 10256.39,
-      "change": 197.98,
-      "pct": 1.93,
-      "quoted_at": "20261123161403"
+      "value": 10423.6,
+      "prev_close": 10454.37,
+      "change": -30.77,
+      "pct": -0.29,
+      "quoted_at": "20261124161439"
     },
     {
       "code": "sz399006",
       "name": "创业板指",
       "market": "cn",
-      "value": 2280.2,
-      "prev_close": 2212.13,
-      "change": 68.07,
-      "pct": 3.08,
-      "quoted_at": "20261123161418"
+      "value": 2278.99,
+      "prev_close": 2280.2,
+      "change": -1.21,
+      "pct": -0.05,
+      "quoted_at": "20261124161454"
     },
     {
       "code": "usINX",
       "name": "标普500",
       "market": "us",
-      "value": 7261.06,
-      "prev_close": 6910.39,
-      "change": 350.67,
-      "pct": 5.07,
-      "quoted_at": "2026-11-23 15:25:40"
+      "value": 7188.4,
+      "prev_close": 7237.17,
+      "change": -48.77,
+      "pct": -0.67,
+      "quoted_at": "2026-11-24 14:37:00"
     },
     {
       "code": "usIXIC",
       "name": "纳斯达克",
       "market": "us",
-      "value": 24171.38,
-      "prev_close": 22617.73,
-      "change": 1553.65,
-      "pct": 6.87,
-      "quoted_at": "2026-11-23 15:25:40"
+      "value": 23670.98,
+      "prev_close": 24089.56,
+      "change": -418.58,
+      "pct": -1.74,
+      "quoted_at": "2026-11-24 14:37:00"
     },
     {
       "code": "usDJI",
       "name": "道琼斯",
       "market": "us",
-      "value": 49739.39,
-      "prev_close": 48147.33,
-      "change": 1592.06,
-      "pct": 3.31,
-      "quoted_at": "2026-11-23 15:25:40"
+      "value": 49950.69,
+      "prev_close": 49595.31,
+      "change": 355.38,
+      "pct": 0.72,
+      "quoted_at": "2026-11-24 14:37:00"
     }
   ]
 }
