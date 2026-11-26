@@ -1,67 +1,67 @@
 {
-  "date": "2026-11-25",
-  "generated_at": "2026-11-25T18:44:06Z",
+  "date": "2026-11-26",
+  "generated_at": "2026-11-26T18:32:03Z",
   "source": "腾讯行情 qt.gtimg.cn",
   "indices": [
     {
       "code": "sh000001",
       "name": "上证指数",
       "market": "cn",
-      "value": 3476.47,
-      "prev_close": 3548.37,
-      "change": -71.9,
-      "pct": -2.03,
-      "quoted_at": "20261125161427"
+      "value": 3476.88,
+      "prev_close": 3476.47,
+      "change": 0.41,
+      "pct": 0.01,
+      "quoted_at": "20261126161427"
     },
     {
       "code": "sz399001",
       "name": "深证成指",
       "market": "cn",
-      "value": 10086.36,
-      "prev_close": 10423.6,
-      "change": -337.24,
-      "pct": -3.24,
-      "quoted_at": "20261125161448"
+      "value": 10084.04,
+      "prev_close": 10086.36,
+      "change": -2.32,
+      "pct": -0.02,
+      "quoted_at": "20261126161415"
     },
     {
       "code": "sz399006",
       "name": "创业板指",
       "market": "cn",
-      "value": 2183.58,
-      "prev_close": 2278.99,
-      "change": -95.41,
-      "pct": -4.19,
-      "quoted_at": "20261125161403"
+      "value": 2189.82,
+      "prev_close": 2183.58,
+      "change": 6.24,
+      "pct": 0.29,
+      "quoted_at": "20261126161430"
     },
     {
       "code": "usINX",
       "name": "标普500",
       "market": "us",
-      "value": 7170.66,
+      "value": 7182.78,
       "prev_close": 7201.09,
-      "change": -30.43,
-      "pct": -0.42,
-      "quoted_at": "2026-11-25 13:43:59"
+      "change": -18.31,
+      "pct": -0.25,
+      "quoted_at": "2026-11-25 16:32:06"
     },
     {
       "code": "usIXIC",
       "name": "纳斯达克",
       "market": "us",
-      "value": 23471.31,
+      "value": 23585.8,
       "prev_close": 23733.54,
-      "change": -262.23,
-      "pct": -1.1,
-      "quoted_at": "2026-11-25 13:43:59"
+      "change": -147.74,
+      "pct": -0.62,
+      "quoted_at": "2026-11-25 17:15:59"
     },
     {
       "code": "usDJI",
       "name": "道琼斯",
       "market": "us",
-      "value": 50247.53,
+      "value": 50182.95,
       "prev_close": 50018.7,
-      "change": 228.83,
-      "pct": 0.46,
-      "quoted_at": "2026-11-25 13:43:59"
+      "change": 164.25,
+      "pct": 0.33,
+      "quoted_at": "2026-11-25 16:32:17"
     }
   ]
 }
